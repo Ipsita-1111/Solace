@@ -112,7 +112,7 @@ export default function LoginPage() {
 
               <button 
                 type="submit" 
-                className="w-full h-12 rounded-xl font-bold text-base shadow-lg shadow-[var(--accent)]/20 hover:shadow-[var(--accent)]/30 active:scale-[0.98] transition-all bg-[var(--accent)] text-white flex items-center justify-center disabled:opacity-50 disabled:pointer-events-none"
+                className="w-full h-12 rounded-xl font-bold text-base shadow-lg shadow-[var(--accent)]/20 hover:shadow-[var(--accent)]/30 active:scale-[0.98] transition-all bg-[var(--accent)] text-[var(--bg-primary)] flex items-center justify-center disabled:opacity-50 disabled:pointer-events-none"
                 disabled={isLoading}
               >
                 {isLoading ? (

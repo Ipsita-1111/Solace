@@ -57,8 +57,28 @@ const timelineEvents = [
 ]
 
 export default function PlannerPage() {
-  const [events] = React.useState(timelineEvents)
+  const [events, setEvents] = React.useState(timelineEvents)
   const [newTaskTitle, setNewTaskTitle] = React.useState("")
+
+  const handleAddTask = () => {
+    if (!newTaskTitle.trim()) return
+    
+    // Get current time formatted beautifully
+    const timeString = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+    
+    const newEvent = {
+      id: events.length + 1,
+      time: timeString,
+      title: newTaskTitle,
+      description: "Added via Quick Add. Stay focused and complete this task!",
+      status: "upcoming",
+      category: "Tasks",
+      icon: Target,
+    }
+    
+    setEvents([...events, newEvent])
+    setNewTaskTitle("")
+  }
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -93,9 +113,13 @@ export default function PlannerPage() {
             placeholder="Quick add task..." 
             value={newTaskTitle}
             onChange={(e) => setNewTaskTitle(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleAddTask()}
             className="w-full md:w-64 border-[var(--border-color)] bg-[var(--bg-secondary)]/50 focus:border-[var(--accent)] shadow-sm"
           />
-          <Button className="shrink-0 bg-[var(--accent)] hover:bg-[var(--accent)]/90 text-white shadow-md shadow-[var(--accent)]/20 transition-all">
+          <Button 
+            onClick={handleAddTask}
+            className="shrink-0 bg-[var(--accent)] hover:bg-[var(--accent)]/90 text-white shadow-md shadow-[var(--accent)]/20 transition-all"
+          >
             <Plus className="w-4 h-4 mr-1" /> Add
           </Button>
         </div>

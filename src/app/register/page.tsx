@@ -45,8 +45,8 @@ export default function RegisterPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-[var(--bg-primary)] p-4 relative overflow-hidden">
       {/* Background Orbs */}
-      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[var(--accent)]/10 rounded-full blur-[120px]" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[var(--accent)]/5 rounded-full blur-[120px]" />
+      <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[var(--accent)]/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[var(--accent)]/5 rounded-full blur-[120px] pointer-events-none" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -128,7 +128,7 @@ export default function RegisterPage() {
 
               <button 
                 type="submit" 
-                className="w-full h-12 rounded-xl font-bold text-base shadow-lg shadow-[var(--accent)]/20 hover:shadow-[var(--accent)]/30 active:scale-[0.98] transition-all bg-[var(--accent)] text-white mt-4 flex items-center justify-center disabled:opacity-50 disabled:pointer-events-none"
+                className="w-full h-12 rounded-xl font-bold text-base shadow-lg shadow-[var(--accent)]/20 hover:shadow-[var(--accent)]/30 active:scale-[0.98] transition-all bg-[var(--accent)] text-[var(--bg-primary)] mt-4 flex items-center justify-center disabled:opacity-50 disabled:pointer-events-none"
                 disabled={isLoading}
               >
                 {isLoading ? (
