@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* Removed invalid @plugin and @theme at-rules; custom properties are defined in :root */
+
+/* Base Light Theme (Minimal Monochrome) */
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f4f4f5;
+  --text-primary: #09090b;
+  --text-secondary: #71717a;
+  --accent: #18181b;
+  --accent-hover: #27272a;
+  --border-color: #e4e4e7;
+  --font-primary: var(--font-geist-sans), sans-serif;
+  --font-secondary: var(--font-geist-sans), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+/* Base Dark Theme (Minimal Monochrome) */
+[data-theme='dark'] {
+  --bg-primary: #09090b;
+  --bg-secondary: #18181b;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --accent: #fafafa;
+  --accent-hover: #e4e4e7;
+  --border-color: #27272a;
+}
+
+/* Dark Academia */
+[data-theme='dark-academia'] {
+  --bg-primary: #2d2824;
+  --bg-secondary: #3a332c;
+  --text-primary: #e8e1d5;
+  --text-secondary: #b5a999;
+  --accent: #8c6b4a;
+  --accent-hover: #73573c;
+  --border-color: #4a4138;
+  --font-primary: var(--font-playfair), serif;
+  --font-secondary: var(--font-inter), sans-serif;
+}
+
+/* Soft Girl / Pastel */
+[data-theme='pastel'] {
+  --bg-primary: #fff0f5;
+  --bg-secondary: #ffe4e1;
+  --text-primary: #5c4d5c;
+  --text-secondary: #8a7a8a;
+  --accent: #ffb6c1;
+  --accent-hover: #ffa0b4;
+  --border-color: #ffd1dc;
+  --font-primary: var(--font-nunito), sans-serif;
+  --font-secondary: var(--font-nunito), sans-serif;
+}
+
+/* Cyberpunk Futuristic */
+[data-theme='cyberpunk'] {
+  --bg-primary: #050510;
+  --bg-secondary: #101020;
+  --text-primary: #00ffcc;
+  --text-secondary: #ff00ff;
+  --accent: #ff0055;
+  --accent-hover: #ff3377;
+  --border-color: #00ffcc;
+  --font-primary: var(--font-share-tech), monospace;
+  --font-secondary: var(--font-geist-mono), monospace;
+}
+
+/* Cottagecore / Nature */
+[data-theme='cottagecore'] {
+  --bg-primary: #f4ecd8;
+  --bg-secondary: #e8dec1;
+  --text-primary: #4a5d23;
+  --text-secondary: #6b705c;
+  --accent: #8a9a5b;
+  --accent-hover: #738249;
+  --border-color: #d4c5a6;
+  --font-primary: var(--font-lora), serif;
+  --font-secondary: var(--font-inter), sans-serif;
+}
+
+/* Y2K / Gen-Z Pop */
+[data-theme='y2k'] {
+  --bg-primary: #ffebf0;
+  --bg-secondary: #e6e6fa;
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a4a4a;
+  --accent: #ff007f;
+  --accent-hover: #cc0066;
+  --border-color: #ffb3d9;
+  --font-primary: var(--font-comic), sans-serif;
+  --font-secondary: var(--font-inter), sans-serif;
+}
+
+/* Ocean Calm Mode */
+[data-theme='ocean'] {
+  --bg-primary: #001f3f;
+  --bg-secondary: #003366;
+  --text-primary: #e6f2ff;
+  --text-secondary: #99c2ff;
+  --accent: #0074d9;
+  --accent-hover: #005bb5;
+  --border-color: #004080;
+  --font-primary: var(--font-inter), sans-serif;
+  --font-secondary: var(--font-geist-sans), sans-serif;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+}

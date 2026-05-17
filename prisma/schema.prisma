@@ -1,0 +1,74 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+  engineType = "library"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id @default(cuid())
+  name        String
+  email       String   @unique
+  password    String
+  activeTheme String   @default("cyberpunk")
+  
+  metrics     WellnessMetrics?
+  identities  Identity[]
+  journalEntries JournalEntry[]
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model WellnessMetrics {
+  id               String @id @default(cuid())
+  mentalClarity    Int    @default(85)
+  physicalEnergy   Int    @default(60)
+  emotionalBalance Int    @default(90)
+  
+  userId           String @unique
+  user             User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Identity {
+  id        String  @id @default(cuid())
+  name      String
+  iconName  String
+  iconColor String
+  progress  Int     @default(0)
+  
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  habits    Habit[]
+}
+
+model Habit {
+  id         String   @id @default(cuid())
+  title      String
+  completed  Boolean  @default(false)
+  streak     Int      @default(0)
+  
+  identityId String
+  identity   Identity @relation(fields: [identityId], references: [id], onDelete: Cascade)
+}
+
+model JournalEntry {
+  id        String   @id @default(cuid())
+  content   String
+  mood      String
+  insight   String
+  tags      String   // Stored as a comma-separated string
+  createdAt DateTime @default(now())
+  
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
